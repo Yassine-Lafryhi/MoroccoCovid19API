@@ -14,6 +14,19 @@ public class Main {
         port(80);
         Database.connect();
 
+        get("/cases/:type/", (req, res) ->
+        {
+            res.type("application/json");
+            String type = req.params(":type");
+            Gson gson = new Gson();
+            ArrayList<Case> cases = new ArrayList<>();
+            if (type.equals("confirmed") || type.equals("recovered") || type.equals("died")) {
+                cases = select(type);
+            }
+            return gson.toJson(cases);
+        });
+
+
         get("/cases/", (req, res) ->
         {
             res.type("application/json");
@@ -38,6 +51,25 @@ public class Main {
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
 
+    }
+
+    private static ArrayList<Case> select(String type) {
+        ArrayList<Case> cases = new ArrayList<>();
+        try {
+            String query = "SELECT Number,Date FROM Cases WHERE Type = '" + type + "'";
+            System.out.println(query);
+            Statement statement = Database.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                int number = resultSet.getInt(1);
+                String date = resultSet.getString(2);
+                Case data = new Case(type, date, number);
+                cases.add(data);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cases;
     }
 
     private static ArrayList<Case> selectAllCases() {
