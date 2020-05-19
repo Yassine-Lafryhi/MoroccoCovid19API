@@ -1,5 +1,5 @@
 # MoroccoCovid19API
-> Morocco Covid 19 API
+> Morocco Covid 19 API (cases: Confirmed,Recovered,Deaths) according to the Ministry of Health
 
 ![](https://img.shields.io/badge/license-MIT-blue)
 ![](https://img.shields.io/badge/version-1.0-orange)
