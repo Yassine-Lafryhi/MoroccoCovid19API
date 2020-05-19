@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'ma.covid19.api'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.sparkjava:spark-core:2.9.0'
+    implementation 'org.jsoup:jsoup:1.12.1'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+    implementation 'org.xerial:sqlite-jdbc:3.8.11.2'
+}
