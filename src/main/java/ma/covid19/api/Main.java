@@ -7,6 +7,8 @@ import java.lang.reflect.Type;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,7 +36,21 @@ public class Main {
             Gson gson = new Gson();
             Case caseByDate = null;
             if (type.equals("confirmed") || type.equals("recovered") || type.equals("died")) {
-                caseByDate = select(type,date);
+                caseByDate = select(type, date);
+            }
+            return gson.toJson(caseByDate);
+        });
+
+
+        get("/cases/:type/:day/:month/:year/daily", (req, res) ->
+        {
+            res.type("application/json");
+            String date = req.params(":day") + "-" + req.params(":month") + "-" + req.params(":year");
+            String type = req.params(":type");
+            Gson gson = new Gson();
+            Case caseByDate = null;
+            if (type.equals("confirmed") || type.equals("recovered") || type.equals("died")) {
+                caseByDate = selectDaily(type, date);
             }
             return gson.toJson(caseByDate);
         });
@@ -96,6 +112,34 @@ public class Main {
             e.printStackTrace();
         }
         return caseByDate;
+    }
+
+    private static Case selectDaily(String type, String date) {
+        Case dailyCase = new Case();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate localDate = LocalDate.parse(date, dateTimeFormatter);
+        String yesterday = localDate.minusDays(1).format(dateTimeFormatter);
+        try {
+            String query = "SELECT Number FROM Cases WHERE Type = '" + type + "' AND Date = '" + date + "'";
+            Statement statement = Database.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            resultSet.next();
+            int todayCases = resultSet.getInt(1);
+
+            query = "SELECT Number FROM Cases WHERE Type = '" + type + "' AND Date = '" + yesterday + "'";
+            statement = Database.connection.createStatement();
+            resultSet = statement.executeQuery(query);
+            resultSet.next();
+            int yesterdayCases = resultSet.getInt(1);
+
+            dailyCase.setDate(date);
+            dailyCase.setType(type);
+            dailyCase.setNumber(todayCases - yesterdayCases);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return dailyCase;
     }
 
     private static ArrayList<Case> select(String type) {
