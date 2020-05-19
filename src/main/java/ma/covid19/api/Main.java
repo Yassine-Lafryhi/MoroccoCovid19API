@@ -1,11 +1,14 @@
 package ma.covid19.api;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static spark.Spark.*;
 
@@ -13,6 +16,29 @@ public class Main {
     public static void main(String[] args) {
         port(80);
         Database.connect();
+
+        notFound((req, res) -> {
+            res.type("application/json");
+            Gson gson = new Gson();
+            HashMap<String, String> data = new HashMap<>();
+            data.put("message", "Not Found");
+            data.put("documentation_url", "https://github.com/Yassine-Lafryhi/MoroccoCovid19API");
+            return gson.toJson(data);
+        });
+
+        get("/cases/:type/:day/:month/:year", (req, res) ->
+        {
+            res.type("application/json");
+            String date = req.params(":day") + "-" + req.params(":month") + "-" + req.params(":year");
+            String type = req.params(":type");
+            Gson gson = new Gson();
+            Case caseByDate = null;
+            if (type.equals("confirmed") || type.equals("recovered") || type.equals("died")) {
+                caseByDate = select(type,date);
+            }
+            return gson.toJson(caseByDate);
+        });
+
 
         get("/cases/:type/", (req, res) ->
         {
@@ -53,6 +79,25 @@ public class Main {
 
     }
 
+
+    private static Case select(String type, String date) {
+        Case caseByDate = new Case();
+        try {
+            String query = "SELECT Number FROM Cases WHERE Type = '" + type + "' AND Date = '" + date + "'";
+            System.out.println(query);
+            Statement statement = Database.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            resultSet.next();
+            caseByDate.setDate(date);
+            caseByDate.setType(type);
+            caseByDate.setNumber(resultSet.getInt(1));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return caseByDate;
+    }
+
     private static ArrayList<Case> select(String type) {
         ArrayList<Case> cases = new ArrayList<>();
         try {
@@ -66,6 +111,7 @@ public class Main {
                 Case data = new Case(type, date, number);
                 cases.add(data);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -86,6 +132,7 @@ public class Main {
                 Case data = new Case(type, date, number);
                 cases.add(data);
             }
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
