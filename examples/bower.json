@@ -1,0 +1,21 @@
+{
+  "name": "MoroccoCovid19API-Examples",
+  "homepage": "https://github.com/Yassine-Lafryhi/MoroccoCovid19API",
+  "authors": [
+    "Yassine-Lafryhi"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chartist": "^0.11.4",
+    "jquery": "^3.5.1"
+  }
+}
