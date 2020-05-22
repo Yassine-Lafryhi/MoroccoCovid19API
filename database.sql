@@ -479,6 +479,6 @@ VALUES (7211, 'confirmed', '21-05-2020');
 INSERT INTO Cases (Number, Type, Date)
 VALUES (197, 'died', '22-05-2020');
 INSERT INTO Cases (Number, Type, Date)
-VALUES (4347, 'recovered', '22-05-2020');
+VALUES (4377, 'recovered', '22-05-2020');
 INSERT INTO Cases (Number, Type, Date)
-VALUES (7300, 'confirmed', '22-05-2020');
+VALUES (7332, 'confirmed', '22-05-2020');
