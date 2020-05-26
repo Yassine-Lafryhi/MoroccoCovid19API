@@ -1,5 +1,5 @@
 # MoroccoCovid19API
-> Morocco Covid 19 API (cases: Confirmed,Recovered,Deaths) according to the Ministry of Health
+> Morocco COVID-19 API (cases: Confirmed,Recovered,Deaths) according to the Ministry of Health
 
 ![](https://img.shields.io/badge/license-MIT-blue)
 ![](https://img.shields.io/badge/version-1.0-orange)
@@ -18,6 +18,56 @@
 - Get the case number by type and date
 
 ## How To Use
+> Get daily cases according to type :
+```shell
+curl http://localhost/cases/recovered/daily
+```
+Example of result :
+```json
+[  
+   {
+     "date": "19-05-2020",
+     "type": "recovered",
+     "number": 143
+   },
+   {
+     "date": "20-05-2020",
+     "type": "recovered",
+     "number": 197
+   },
+   {
+     "date": "21-05-2020",
+     "type": "recovered",
+     "number": 182
+   },
+   {
+     "date": "22-05-2020",
+     "type": "recovered",
+     "number": 97
+   },
+   {
+     "date": "23-05-2020",
+     "type": "recovered",
+     "number": 261
+   },
+   {
+     "date": "24-05-2020",
+     "type": "recovered",
+     "number": 65
+   },
+   {
+     "date": "25-05-2020",
+     "type": "recovered",
+     "number": 71
+   },
+   {
+     "date": "26-05-2020",
+     "type": "recovered",
+     "number": 67
+   }
+ ]
+  
+```
 
 > Get all cases :
 ```shell
@@ -92,7 +142,7 @@ Example of result :
 
 
 ## Examples
-> Confirmed Cases :
+> All Confirmed Cases :
 ```html
 <!DOCTYPE html>
 <html>
@@ -128,6 +178,43 @@ Example of result :
 </html>
 ```
 ![](screenshots/screenshot1.png)
+
+> Daily Recovered Cases :
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Recovered Cases</title>
+    <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
+    <script src="bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<div class="ct-chart ct-perfect-fourth"></div>
+<script>
+    var the_labels = [];
+    var the_series = [];
+    $.ajax({
+        url: "http://localhost/cases/recovered/daily",
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function (index) {
+                the_labels.push(data[index].date.toString().replace("-2020", ""));
+                the_series.push(data[index].number);
+            });
+            var the_data = {
+                labels: the_labels,
+                series: [the_series]
+            };
+            new Chartist.Line('.ct-chart', the_data);
+        }
+    });
+</script>
+</body>
+</html>
+```
+![](screenshots/screenshot2.png)
 
 
 ## Contributing
