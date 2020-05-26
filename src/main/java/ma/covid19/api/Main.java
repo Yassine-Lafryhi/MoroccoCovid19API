@@ -35,7 +35,7 @@ public class Main {
             String type = req.params(":type");
             Gson gson = new Gson();
             Case caseByDate = null;
-            if (type.equals("confirmed") || type.equals("recovered") || type.equals("died")) {
+            if (type.equals("confirmed") || type.equals("recovered") || type.equals("deaths")) {
                 caseByDate = select(type, date);
             }
             return gson.toJson(caseByDate);
@@ -49,7 +49,7 @@ public class Main {
             String type = req.params(":type");
             Gson gson = new Gson();
             Case caseByDate = null;
-            if (type.equals("confirmed") || type.equals("recovered") || type.equals("died")) {
+            if (type.equals("confirmed") || type.equals("recovered") || type.equals("deaths")) {
                 caseByDate = selectDaily(type, date);
             }
             return gson.toJson(caseByDate);
@@ -62,8 +62,21 @@ public class Main {
             String type = req.params(":type");
             Gson gson = new Gson();
             ArrayList<Case> cases = new ArrayList<>();
-            if (type.equals("confirmed") || type.equals("recovered") || type.equals("died")) {
+            if (type.equals("confirmed") || type.equals("recovered") || type.equals("deaths")) {
                 cases = select(type);
+            }
+            return gson.toJson(cases);
+        });
+
+
+        get("/cases/:type/daily", (req, res) ->
+        {
+            res.type("application/json");
+            String type = req.params(":type");
+            Gson gson = new Gson();
+            ArrayList<Case> cases = new ArrayList<>();
+            if (type.equals("confirmed") || type.equals("recovered") || type.equals("deaths")) {
+                cases = selectDaily(type);
             }
             return gson.toJson(cases);
         });
@@ -140,6 +153,44 @@ public class Main {
             e.printStackTrace();
         }
         return dailyCase;
+    }
+
+    private static ArrayList<Case> selectDaily(String type) {
+        ArrayList<Case> cases = new ArrayList<>();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        try {
+            String query = "SELECT Date FROM Cases WHERE Type = '" + type + "'";
+            System.out.println(query);
+            Statement statement = Database.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                String date = resultSet.getString(1);
+                LocalDate localDate = LocalDate.parse(date, dateTimeFormatter);
+                String yesterday = localDate.minusDays(1).format(dateTimeFormatter);
+
+                query = "SELECT Number FROM Cases WHERE Type = '" + type + "' AND Date = '" + date + "'";
+                statement = Database.connection.createStatement();
+                ResultSet resultSet2 = statement.executeQuery(query);
+                resultSet2.next();
+                int todayCases = resultSet2.getInt(1);
+
+                query = "SELECT Number FROM Cases WHERE Type = '" + type + "' AND Date = '" + yesterday + "'";
+                statement = Database.connection.createStatement();
+                ResultSet resultSet3 = statement.executeQuery(query);
+
+                int yesterdayCases = 0;
+                if (resultSet3.next()) {
+                    yesterdayCases = resultSet3.getInt(1);
+                }
+
+                Case data = new Case(type, date, todayCases - yesterdayCases);
+                cases.add(data);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return cases;
     }
 
     private static ArrayList<Case> select(String type) {
