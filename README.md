@@ -13,10 +13,10 @@
 
 
 ## Features
--[x] Get daily cases
--[x] Get all cases
--[x] Get all cases by type
--[x] Get the case number by type and date
+* [x] Get daily cases
+* [x] Get all cases
+* [x] Get all cases by type
+* [x] Get the case number by type and date
 
 ## How To Use
 > Get daily cases according to type :
