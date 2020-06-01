@@ -13,9 +13,10 @@
 
 
 ## Features
-- Get all cases
-- Get all cases by type
-- Get the case number by type and date
+-[x] Get daily cases
+-[x] Get all cases
+-[x] Get all cases by type
+-[x] Get the case number by type and date
 
 ## How To Use
 > Get daily cases according to type :
@@ -88,7 +89,7 @@ Example of result :
   },
   {
     "date": "18-05-2020",
-    "type": "died",
+    "type": "deaths",
     "number": 192
   },
   {
@@ -105,37 +106,37 @@ Example of result :
 ```
 > Get all cases by type :
 ```shell
-curl http://localhost/cases/died
+curl http://localhost/cases/deaths
 ```
 Example of result :
 ```json
 [
   {
     "date": "12-03-2020",
-    "type": "died",
+    "type": "deaths",
     "number": 1
   },
   {
     "date": "17-03-2020",
-    "type": "died",
+    "type": "deaths",
     "number": 2
   },
   {
     "date": "20-03-2020",
-    "type": "died",
+    "type": "deaths",
     "number": 3
   }
 ]
 ```
 > Get the case number by type and date :
 ```shell
-curl http://localhost/cases/died/12/03/2020
+curl http://localhost/cases/deaths/12/03/2020
 ```
 Example of result :
 ```json
 {
   "date": "12-03-2020",
-  "type": "died",
+  "type": "deaths",
   "number": 1
 }
 ```
@@ -215,6 +216,80 @@ Example of result :
 </html>
 ```
 ![](screenshots/screenshot2.png)
+
+> Daily Recovered Cases :
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Confirmed Cases</title>
+    <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
+    <script src="bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<div class="ct-chart ct-perfect-fourth"></div>
+<script>
+    var the_labels = [];
+    var the_series = [];
+    $.ajax({
+        url: "http://localhost/cases/confirmed/daily",
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function (index) {
+                the_labels.push(data[index].date.toString().replace("-2020", ""));
+                the_series.push(data[index].number);
+            });
+            var the_data = {
+                labels: the_labels,
+                series: [the_series]
+            };
+            new Chartist.Line('.ct-chart', the_data);
+        }
+    });
+</script>
+</body>
+</html>
+```
+![](screenshots/screenshot3.png)
+
+> Daily Deaths Cases :
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Confirmed Cases</title>
+    <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
+    <script src="bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<div class="ct-chart ct-perfect-fourth"></div>
+<script>
+    var the_labels = [];
+    var the_series = [];
+    $.ajax({
+        url: "http://localhost/cases/deaths/daily",
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function (index) {
+                the_labels.push(data[index].date.toString().replace("-2020", ""));
+                the_series.push(data[index].number);
+            });
+            var the_data = {
+                labels: the_labels,
+                series: [the_series]
+            };
+            new Chartist.Line('.ct-chart', the_data);
+        }
+    });
+</script>
+</body>
+</html>
+```
+![](screenshots/screenshot4.png)
 
 
 ## Contributing

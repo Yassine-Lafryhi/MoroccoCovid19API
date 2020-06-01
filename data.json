@@ -1057,11 +1057,101 @@
   {
     "date": "26-05-2020",
     "type": "recovered",
-    "number": 4841
+    "number": 4881
   },
   {
     "date": "26-05-2020",
     "type": "confirmed",
-    "number": 7556
+    "number": 7577
+  },
+  {
+    "date": "27-05-2020",
+    "type": "deaths",
+    "number": 202
+  },
+  {
+    "date": "27-05-2020",
+    "type": "recovered",
+    "number": 4978
+  },
+  {
+    "date": "27-05-2020",
+    "type": "confirmed",
+    "number": 7601
+  },
+  {
+    "date": "28-05-2020",
+    "type": "deaths",
+    "number": 202
+  },
+  {
+    "date": "28-05-2020",
+    "type": "recovered",
+    "number": 5195
+  },
+  {
+    "date": "28-05-2020",
+    "type": "confirmed",
+    "number": 7643
+  },
+  {
+    "date": "29-05-2020",
+    "type": "deaths",
+    "number": 202
+  },
+  {
+    "date": "29-05-2020",
+    "type": "recovered",
+    "number": 5271
+  },
+  {
+    "date": "29-05-2020",
+    "type": "confirmed",
+    "number": 7714
+  },
+  {
+    "date": "30-05-2020",
+    "type": "deaths",
+    "number": 204
+  },
+  {
+    "date": "30-05-2020",
+    "type": "recovered",
+    "number": 5401
+  },
+  {
+    "date": "30-05-2020",
+    "type": "confirmed",
+    "number": 7780
+  },
+  {
+    "date": "31-05-2020",
+    "type": "deaths",
+    "number": 205
+  },
+  {
+    "date": "31-05-2020",
+    "type": "recovered",
+    "number": 5459
+  },
+  {
+    "date": "31-05-2020",
+    "type": "confirmed",
+    "number": 7807
+  },
+  {
+    "date": "01-06-2020",
+    "type": "deaths",
+    "number": 205
+  },
+  {
+    "date": "01-06-2020",
+    "type": "recovered",
+    "number": 5754
+  },
+  {
+    "date": "01-06-2020",
+    "type": "confirmed",
+    "number": 7819
   }
 ]
