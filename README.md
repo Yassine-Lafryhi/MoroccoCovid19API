@@ -217,7 +217,7 @@ Example of result :
 ```
 ![](screenshots/screenshot2.png)
 
-> Daily Recovered Cases :
+> Daily Confirmed Cases :
 ```html
 <!DOCTYPE html>
 <html>
