@@ -833,3 +833,101 @@ INSERT INTO Cases (Number, Type, Date)
 VALUES (12065, 'recovered', '11-07-2020');
 INSERT INTO Cases (Number, Type, Date)
 VALUES (15542, 'confirmed', '11-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (250, 'deaths', '12-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (12283, 'recovered', '12-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (15745, 'confirmed', '12-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (255, 'deaths', '13-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (12934, 'recovered', '13-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (15936, 'confirmed', '13-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (257, 'deaths', '14-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (13442, 'recovered', '14-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (16097, 'confirmed', '14-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (259, 'deaths', '15-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (13821, 'recovered', '15-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (16262, 'confirmed', '15-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (263, 'deaths', '16-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (13965, 'recovered', '16-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (16545, 'confirmed', '16-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (264, 'deaths', '17-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (14360, 'recovered', '17-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (16726, 'confirmed', '17-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (269, 'deaths', '18-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (14620, 'recovered', '18-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (17015, 'confirmed', '18-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (273, 'deaths', '19-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (14921, 'recovered', '19-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (17236, 'confirmed', '19-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (276, 'deaths', '20-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (15132, 'recovered', '20-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (17562, 'confirmed', '20-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (280, 'deaths', '21-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (15389, 'recovered', '21-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (17742, 'confirmed', '21-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (285, 'deaths', '22-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (15636, 'recovered', '22-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (17962, 'confirmed', '22-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (292, 'deaths', '23-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (15872, 'recovered', '23-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (18264, 'confirmed', '23-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (299, 'deaths', '24-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (16100, 'recovered', '24-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (18834, 'confirmed', '24-07-2020');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (305, 'deaths', '25-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (16282, 'recovered', '25-07-2020');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (19645, 'confirmed', '25-07-2020');
