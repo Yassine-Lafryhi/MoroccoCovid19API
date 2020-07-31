@@ -152,26 +152,36 @@ Example of result :
     <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
     <script src="bower_components/chartist/dist/chartist.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
 </head>
 <body>
 <div class="ct-chart ct-perfect-fourth"></div>
 <script>
-    var the_labels = [];
-    var the_series = [];
+    var the_data = [];
     $.ajax({
         url: "http://localhost/cases/confirmed/",
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index) {
-                the_labels.push(data[index].date.toString().replace("-2020", ""));
-                the_series.push(data[index].number);
+                the_data.push({x: moment(data[index].date, "DD-MM-YYYY"), y: data[index].number});
             });
-            var the_data = {
-                labels: the_labels,
-                series: [the_series]
-            };
-            new Chartist.Line('.ct-chart', the_data);
+            new Chartist.Line('.ct-chart', {
+                series: [
+                    {
+                        name: 'confirmed',
+                        data: the_data
+                    }
+                ]
+            }, {
+                axisX: {
+                    type: Chartist.FixedScaleAxis,
+                    divisor: 20,
+                    labelInterpolationFnc: function (value) {
+                        return moment(value).format('DD-MM-YYYY');
+                    }
+                }
+            });
         }
     });
 </script>
@@ -189,26 +199,36 @@ Example of result :
     <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
     <script src="bower_components/chartist/dist/chartist.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
 </head>
 <body>
 <div class="ct-chart ct-perfect-fourth"></div>
 <script>
-    var the_labels = [];
-    var the_series = [];
+    var the_data = [];
     $.ajax({
         url: "http://localhost/cases/recovered/daily",
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index) {
-                the_labels.push(data[index].date.toString().replace("-2020", ""));
-                the_series.push(data[index].number);
+                the_data.push({x: moment(data[index].date, "DD-MM-YYYY"), y: data[index].number});
             });
-            var the_data = {
-                labels: the_labels,
-                series: [the_series]
-            };
-            new Chartist.Line('.ct-chart', the_data);
+            new Chartist.Line('.ct-chart', {
+                series: [
+                    {
+                        name: 'daily-recovered',
+                        data: the_data
+                    }
+                ]
+            }, {
+                axisX: {
+                    type: Chartist.FixedScaleAxis,
+                    divisor: 20,
+                    labelInterpolationFnc: function (value) {
+                        return moment(value).format('DD-MM-YYYY');
+                    }
+                }
+            });
         }
     });
 </script>
@@ -226,26 +246,36 @@ Example of result :
     <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
     <script src="bower_components/chartist/dist/chartist.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
 </head>
 <body>
 <div class="ct-chart ct-perfect-fourth"></div>
 <script>
-    var the_labels = [];
-    var the_series = [];
+    var the_data = [];
     $.ajax({
         url: "http://localhost/cases/confirmed/daily",
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index) {
-                the_labels.push(data[index].date.toString().replace("-2020", ""));
-                the_series.push(data[index].number);
+                the_data.push({x: moment(data[index].date, "DD-MM-YYYY"), y: data[index].number});
             });
-            var the_data = {
-                labels: the_labels,
-                series: [the_series]
-            };
-            new Chartist.Line('.ct-chart', the_data);
+            new Chartist.Line('.ct-chart', {
+                series: [
+                    {
+                        name: 'daily-confirmed',
+                        data: the_data
+                    }
+                ]
+            }, {
+                axisX: {
+                    type: Chartist.FixedScaleAxis,
+                    divisor: 20,
+                    labelInterpolationFnc: function (value) {
+                        return moment(value).format('DD-MM-YYYY');
+                    }
+                }
+            });
         }
     });
 </script>
@@ -259,30 +289,40 @@ Example of result :
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Daily Confirmed Cases</title>
+    <title>Daily Deaths Cases</title>
     <link rel="stylesheet" href="bower_components/chartist/dist/chartist.min.css">
     <script src="bower_components/chartist/dist/chartist.min.js"></script>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/moment/min/moment.min.js"></script>
 </head>
 <body>
 <div class="ct-chart ct-perfect-fourth"></div>
 <script>
-    var the_labels = [];
-    var the_series = [];
+    var the_data = [];
     $.ajax({
         url: "http://localhost/cases/deaths/daily",
         type: 'GET',
         dataType: 'json',
         success: function (data) {
             $.each(data, function (index) {
-                the_labels.push(data[index].date.toString().replace("-2020", ""));
-                the_series.push(data[index].number);
+                the_data.push({x: moment(data[index].date, "DD-MM-YYYY"), y: data[index].number});
             });
-            var the_data = {
-                labels: the_labels,
-                series: [the_series]
-            };
-            new Chartist.Line('.ct-chart', the_data);
+            new Chartist.Line('.ct-chart', {
+                series: [
+                    {
+                        name: 'daily-deaths',
+                        data: the_data
+                    }
+                ]
+            }, {
+                axisX: {
+                    type: Chartist.FixedScaleAxis,
+                    divisor: 20,
+                    labelInterpolationFnc: function (value) {
+                        return moment(value).format('DD-MM-YYYY');
+                    }
+                }
+            });
         }
     });
 </script>
