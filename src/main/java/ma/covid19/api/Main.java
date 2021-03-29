@@ -1,9 +1,7 @@
 package ma.covid19.api;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -56,7 +54,7 @@ public class Main {
         });
 
 
-        get("/cases/:type/", (req, res) ->
+        get("/cases/:type", (req, res) ->
         {
             res.type("application/json");
             String type = req.params(":type");
@@ -82,7 +80,7 @@ public class Main {
         });
 
 
-        get("/cases/", (req, res) ->
+        get("/cases", (req, res) ->
         {
             res.type("application/json");
             Gson gson = new Gson();

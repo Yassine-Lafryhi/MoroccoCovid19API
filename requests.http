@@ -1,5 +1,5 @@
 ### Get all cases :
-GET http://localhost/cases/
+GET http://localhost/cases
 
 ### Get daily cases according to type :
 GET http://localhost/cases/recovered/daily

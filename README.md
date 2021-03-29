@@ -14,8 +14,8 @@
 
 ## Features
 * [x] Get daily cases
-* [x] Get all cases
-* [x] Get all cases by type
+* [x] Get total cases
+* [x] Get total cases by type
 * [x] Get the case number by type and date
 
 ## How To Use
@@ -26,118 +26,288 @@ curl http://localhost/cases/recovered/daily
 Example of result :
 ```json
 [  
-   {
-     "date": "19-05-2020",
-     "type": "recovered",
-     "number": 143
-   },
-   {
-     "date": "20-05-2020",
-     "type": "recovered",
-     "number": 197
-   },
-   {
-     "date": "21-05-2020",
-     "type": "recovered",
-     "number": 182
-   },
-   {
-     "date": "22-05-2020",
-     "type": "recovered",
-     "number": 97
-   },
-   {
-     "date": "23-05-2020",
-     "type": "recovered",
-     "number": 261
-   },
-   {
-     "date": "24-05-2020",
-     "type": "recovered",
-     "number": 65
-   },
-   {
-     "date": "25-05-2020",
-     "type": "recovered",
-     "number": 71
-   },
-   {
-     "date": "26-05-2020",
-     "type": "recovered",
-     "number": 67
-   }
- ]
+     {
+       "date": "16-03-2021",
+       "type": "recovered",
+       "number": 601
+     },
+     {
+       "date": "17-03-2021",
+       "type": "recovered",
+       "number": 578
+     },
+     {
+       "date": "18-03-2021",
+       "type": "recovered",
+       "number": 574
+     },
+     {
+       "date": "19-03-2021",
+       "type": "recovered",
+       "number": 507
+     },
+     {
+       "date": "20-03-2021",
+       "type": "recovered",
+       "number": 484
+     },
+     {
+       "date": "21-03-2021",
+       "type": "recovered",
+       "number": 382
+     },
+     {
+       "date": "22-03-2021",
+       "type": "recovered",
+       "number": 305
+     },
+     {
+       "date": "23-03-2021",
+       "type": "recovered",
+       "number": 543
+     },
+     {
+       "date": "24-03-2021",
+       "type": "recovered",
+       "number": 507
+     },
+     {
+       "date": "25-03-2021",
+       "type": "recovered",
+       "number": 467
+     },
+     {
+       "date": "26-03-2021",
+       "type": "recovered",
+       "number": 523
+     },
+     {
+       "date": "27-03-2021",
+       "type": "recovered",
+       "number": 487
+     },
+     {
+       "date": "28-03-2021",
+       "type": "recovered",
+       "number": 268
+     }
+   ]
   
 ```
 
-> Get all cases :
+> Get total cases :
 ```shell
-curl http://localhost/cases/
+curl http://localhost/cases
 ```
 Example of result :
 ```json
 [
-  {
-    "date": "17-05-2020",
-    "type": "recovered",
-    "number": 3660
-  },
-  {
-    "date": "17-05-2020",
-    "type": "confirmed",
-    "number": 6870
-  },
-  {
-    "date": "18-05-2020",
-    "type": "deaths",
-    "number": 192
-  },
-  {
-    "date": "18-05-2020",
-    "type": "recovered",
-    "number": 3758
-  },
-  {
-    "date": "18-05-2020",
-    "type": "confirmed",
-    "number": 6952
-  }
-]
+    {
+      "date": "21-03-2021",
+      "type": "deaths",
+      "number": 8767
+    },
+    {
+      "date": "21-03-2021",
+      "type": "recovered",
+      "number": 479252
+    },
+    {
+      "date": "21-03-2021",
+      "type": "confirmed",
+      "number": 491709
+    },
+    {
+      "date": "22-03-2021",
+      "type": "deaths",
+      "number": 8769
+    },
+    {
+      "date": "22-03-2021",
+      "type": "recovered",
+      "number": 479557
+    },
+    {
+      "date": "22-03-2021",
+      "type": "confirmed",
+      "number": 491834
+    },
+    {
+      "date": "23-03-2021",
+      "type": "deaths",
+      "number": 8775
+    },
+    {
+      "date": "23-03-2021",
+      "type": "recovered",
+      "number": 480100
+    },
+    {
+      "date": "23-03-2021",
+      "type": "confirmed",
+      "number": 492403
+    },
+    {
+      "date": "24-03-2021",
+      "type": "deaths",
+      "number": 8786
+    },
+    {
+      "date": "24-03-2021",
+      "type": "recovered",
+      "number": 480607
+    },
+    {
+      "date": "24-03-2021",
+      "type": "confirmed",
+      "number": 492842
+    },
+    {
+      "date": "25-03-2021",
+      "type": "deaths",
+      "number": 8788
+    },
+    {
+      "date": "25-03-2021",
+      "type": "recovered",
+      "number": 481074
+    },
+    {
+      "date": "25-03-2021",
+      "type": "confirmed",
+      "number": 493353
+    },
+    {
+      "date": "26-03-2021",
+      "type": "deaths",
+      "number": 8793
+    },
+    {
+      "date": "26-03-2021",
+      "type": "recovered",
+      "number": 481597
+    },
+    {
+      "date": "26-03-2021",
+      "type": "confirmed",
+      "number": 493867
+    },
+    {
+      "date": "27-03-2021",
+      "type": "deaths",
+      "number": 8798
+    },
+    {
+      "date": "27-03-2021",
+      "type": "recovered",
+      "number": 482084
+    },
+    {
+      "date": "27-03-2021",
+      "type": "confirmed",
+      "number": 494358
+    },
+    {
+      "date": "28-03-2021",
+      "type": "deaths",
+      "number": 8798
+    },
+    {
+      "date": "28-03-2021",
+      "type": "recovered",
+      "number": 482352
+    },
+    {
+      "date": "28-03-2021",
+      "type": "confirmed",
+      "number": 494659
+    }
+  ]
 ```
-> Get all cases by type :
+> Get total cases by type :
 ```shell
 curl http://localhost/cases/deaths
 ```
 Example of result :
 ```json
 [
-  {
-    "date": "12-03-2020",
-    "type": "deaths",
-    "number": 1
-  },
-  {
-    "date": "17-03-2020",
-    "type": "deaths",
-    "number": 2
-  },
-  {
-    "date": "20-03-2020",
-    "type": "deaths",
-    "number": 3
-  }
-]
+   {
+     "date": "16-03-2021",
+     "type": "deaths",
+     "number": 8737
+   },
+   {
+     "date": "17-03-2021",
+     "type": "deaths",
+     "number": 8745
+   },
+   {
+     "date": "18-03-2021",
+     "type": "deaths",
+     "number": 8748
+   },
+   {
+     "date": "19-03-2021",
+     "type": "deaths",
+     "number": 8755
+   },
+   {
+     "date": "20-03-2021",
+     "type": "deaths",
+     "number": 8763
+   },
+   {
+     "date": "21-03-2021",
+     "type": "deaths",
+     "number": 8767
+   },
+   {
+     "date": "22-03-2021",
+     "type": "deaths",
+     "number": 8769
+   },
+   {
+     "date": "23-03-2021",
+     "type": "deaths",
+     "number": 8775
+   },
+   {
+     "date": "24-03-2021",
+     "type": "deaths",
+     "number": 8786
+   },
+   {
+     "date": "25-03-2021",
+     "type": "deaths",
+     "number": 8788
+   },
+   {
+     "date": "26-03-2021",
+     "type": "deaths",
+     "number": 8793
+   },
+   {
+     "date": "27-03-2021",
+     "type": "deaths",
+     "number": 8798
+   },
+   {
+     "date": "28-03-2021",
+     "type": "deaths",
+     "number": 8798
+   }
+ ]
 ```
 > Get the case number by type and date :
 ```shell
-curl http://localhost/cases/deaths/12/03/2020
+curl http://localhost/cases/deaths/28/03/2021
 ```
 Example of result :
 ```json
 {
-  "date": "12-03-2020",
+  "date": "28-03-2021",
   "type": "deaths",
-  "number": 1
+  "number": 8798
 }
 ```
 
@@ -174,6 +344,10 @@ Example of result :
                     }
                 ]
             }, {
+                low: 0,
+                showArea: true,
+                showPoint: false,
+                fullWidth: true,
                 axisX: {
                     type: Chartist.FixedScaleAxis,
                     divisor: 20,
@@ -221,6 +395,10 @@ Example of result :
                     }
                 ]
             }, {
+                low: 0,
+                showArea: true,
+                showPoint: false,
+                fullWidth: true,
                 axisX: {
                     type: Chartist.FixedScaleAxis,
                     divisor: 20,
@@ -268,6 +446,10 @@ Example of result :
                     }
                 ]
             }, {
+                low: 0,
+                showArea: true,
+                showPoint: false,
+                fullWidth: true,
                 axisX: {
                     type: Chartist.FixedScaleAxis,
                     divisor: 20,
@@ -315,6 +497,10 @@ Example of result :
                     }
                 ]
             }, {
+                low: 0,
+                showArea: true,
+                showPoint: false,
+                fullWidth: true,
                 axisX: {
                     type: Chartist.FixedScaleAxis,
                     divisor: 20,
