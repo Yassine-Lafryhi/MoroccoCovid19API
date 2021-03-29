@@ -329,7 +329,7 @@ Example of result :
 <script>
     var the_data = [];
     $.ajax({
-        url: "http://localhost/cases/confirmed/",
+        url: "http://localhost/cases/confirmed",
         type: 'GET',
         dataType: 'json',
         success: function (data) {
