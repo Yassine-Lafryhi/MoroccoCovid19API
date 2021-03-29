@@ -1,0 +1,17 @@
+### Get all cases :
+GET http://localhost/cases/
+
+### Get daily cases according to type :
+GET http://localhost/cases/recovered/daily
+
+### Get daily cases according to type :
+GET http://localhost/cases/confirmed/daily
+
+### Get daily cases according to type :
+GET http://localhost/cases/deaths/daily
+
+### Get all cases by type :
+GET http://localhost/cases/deaths
+
+### Get the case number by type and date :
+GET http://localhost/cases/deaths/28/03/2021
