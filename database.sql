@@ -2696,3 +2696,10 @@ INSERT INTO Cases (Number, Type, Date)
 VALUES (484793, 'recovered', '03-04-2021');
 INSERT INTO Cases (Number, Type, Date)
 VALUES (497832, 'confirmed', '03-04-2021');
+
+INSERT INTO Cases (Number, Type, Date)
+VALUES (8850, 'deaths', '04-04-2021');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (484921, 'recovered', '04-04-2021');
+INSERT INTO Cases (Number, Type, Date)
+VALUES (498197, 'confirmed', '04-04-2021');
